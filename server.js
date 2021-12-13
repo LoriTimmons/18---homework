@@ -1,5 +1,7 @@
 const express = require('express');
-const mongooseConnection = require('./config/connections'); 
+const mongooseConnection = require('./config/connections');
+const routes = require('./routes'); 
+
 // const mongoose = require('mongoose');
 
 const app = express();
@@ -10,6 +12,7 @@ const db = require('./models');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(routes);
 
 
 // keep at bottom 
