@@ -15,7 +15,7 @@ router
     .get(getAllThoughts)
     .post(createThought)
 
-// get thoughts by id/ update/ delete 
+// get/update/delete thoughts by id
 router
     .route('/:id')
     .get(getThoughtById)
