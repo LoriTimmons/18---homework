@@ -4,8 +4,9 @@ const {
     getUsersById,
     createUsers,
     updateUsers,
+    addFriend,
     deleteUsers
-  } = require('../../controllers/pizza-controller');
+  } = require('../../controllers/api/users');
   
 //  api/user
   router
@@ -19,6 +20,11 @@ const {
     .get(getUsersById)
     .put(updateUsers)
     .delete(deleteUsers);
+  // add friend to user / remove 
+  router 
+  .route('/:userID/friends/:friendID')
+  .post(addFriend)
+  .delete(removeUser)
   
   module.exports = router;
   
