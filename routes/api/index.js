@@ -1,7 +1,9 @@
 const router = require('express').Router();
-const routes = require ('./api');
+const userRoutes = require('./user-routes.js');
+const thoughts = require('./thoughts');
 
-router.use('api', routes);
+router.use('/user', userRoutes);
+router.use('/thoughts', thoughts);
 
 router.use((req, res) => {
     res.status(404).send('<h1>error 4040!</h1>');
