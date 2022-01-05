@@ -3,7 +3,7 @@ const userRoutes = require('./user-routes.js');
 const thoughts = require('./thought-routes');
 
 router.use('/user', userRoutes);
-router.use('/thought', thoughts);
+router.use('/thoughts', thoughts);
 
 router.use((req, res) => {
     res.status(404).send('<h1>error 4040!</h1>');
