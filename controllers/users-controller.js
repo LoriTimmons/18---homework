@@ -4,12 +4,12 @@ const userController ={
 // get all Users
 getAllUsers(req, res) {
     User.find({})
-      .populate({
-        path: 'friends',
-        select: '-__v'
-      })
-      .select('-__v')
-      .sort({ _id: -1 })
+      // .populate({
+      //   path: 'thought',
+      //   select: '-__v'
+      // })
+      // .select('-__v')
+      // .sort({ _id: -1 })
       .then(dbUsersData => res.json(dbUsersData))
       .catch(err => {
         console.log(err);
@@ -34,6 +34,7 @@ getAllUsers(req, res) {
 
   // create User
   createUsers({ body }, res) {
+    console.log('rotue is running')
     User.create(body)
       .then(dbUsersData => res.json(dbUsersData))
       .catch(err => res.json(err));
