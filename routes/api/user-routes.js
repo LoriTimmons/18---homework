@@ -9,7 +9,7 @@ const {
     addFriend,
     deleteUser,
     removeUser
-  } = require('../../controllers/user-controller');
+  } = require('../../controllers/users-controller');
   
   // create/ get all users
   router
