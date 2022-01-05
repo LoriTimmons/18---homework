@@ -37,7 +37,61 @@ getAllUsers(req, res) {
     User.create(body)
       .then(dbUsersData => res.json(dbUsersData))
       .catch(err => res.json(err));
-  }
+  },
+  // add friend to user id
+  addFriend({ params }, res) {
+    User.findOneAndUpdate(
+        { _id: params.userId },
+        { $push: { friends: params.friendId } },
+        { new: true, runValidators: true }
+    )
+    .then(dbUserData => {
+        if (!dbUserData) {
+            res.status(404).json({ message: 'No ID associated with a User' });
+            return;
+        }
+        res.json(dbUserData);
+    })
+    .catch(err => res.json(err));
+},
+
+// update-user data
+updateUser({ params, body}, res) {
+    User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
+    .then(dbUserData => {
+        if (!dbUserData) {
+            res.status(404).json({ message: 'No ID associated with a User'});
+            return;
+        }
+        res.json(dbUserData);
+    })
+    .catch(err => res.status(400).json(err))
+},
+
+// delete user
+deleteUser({ params }, res) {
+    User.findOneAndDelete({ _id: params.id })
+    .then(dbUserData => {
+        if (!dbUserData) {
+            res.status(404).json({ message: 'No ID associated with a User'});
+            return;
+        }
+        res.json(dbUserData);
+    })
+    .catch(err => res.status(400).json(err))
+},
+
+// remove friend from user by user id/ friend id
+removeUser({ params }, res) {
+    User.findOneAndUpdate(
+        { _id: params.userId },
+        { $pull: { friends: params.friendId }},
+        { new: true }
+    )
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => res.json(err));
 }
+};
+
 
   module.exports = userController;

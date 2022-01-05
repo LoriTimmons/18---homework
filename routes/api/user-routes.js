@@ -3,8 +3,8 @@ const router = require('express').Router();
 // declare all routing functions
 const {
     getAllUsers,
-    getUserById,
-    createUser,
+    getUsersById,
+    createUsers,
     updateUser,
     addFriend,
     deleteUser,
@@ -15,12 +15,12 @@ const {
   router
     .route('/')
     .get(getAllUsers)
-    .post(createUser);
+    .post(createUsers);
   
   // get user by id/ update and delete user by id
   router
     .route('/:id')
-    .get(getUserById)
+    .get(getUsersById)
     .put(updateUser)
     .delete(deleteUser);
 

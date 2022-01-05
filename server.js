@@ -12,7 +12,7 @@ const db = require('./models');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-mongoose.set('debug', true);
+// mongoose.set('debug', true);
 
 app.use(routes);
 
