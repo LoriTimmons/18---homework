@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const req = require('express/lib/request');
 const apiRoutes = require('./api');
 
 // adds api prefix to all api routes
