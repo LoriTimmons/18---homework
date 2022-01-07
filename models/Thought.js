@@ -1,4 +1,4 @@
-const { Schema, model} = require("mongoose");
+const { Schema, model, Types} = require("mongoose");
 const reactionSchema = require("./Reaction");
 const dateFormat = require('../utils/dateFormat');
 
@@ -17,7 +17,7 @@ createdAt: {
 
 username: {
     type: String, 
-    required: 'Username is required'
+    required: 'Username is required',
 },
 
 reactions: [
